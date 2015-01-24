@@ -2,14 +2,15 @@
 using System.Collections;
 
 public class WaypointHelper : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Transform[] RightStairs;
+    public Transform[] LeftStairs;
+    // Use this for initialization
+    void Start () {
+    
+    }
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 }

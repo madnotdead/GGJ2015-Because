@@ -16,6 +16,10 @@ public class Caminador : MonoBehaviour
 	{
         if (camino.puntos != null && camino.puntos.Count>0)
         {
+            if (puntoActual >= camino.puntos.Count)
+            {
+                puntoActual = camino.puntos.Count - 1;
+            }
             Transform punto = camino.puntos[puntoActual];
             Vector3 dir = (punto.position - transform.position).normalized;
 
@@ -31,7 +35,7 @@ public class Caminador : MonoBehaviour
                 puntoActual += direccion;
 
             }
-            else
+            else if ((puntoActual == camino.puntos.Count || puntoActual == -1) && !loop)
             {
                 puntoActual = 0;
                 SendMessage(MessageToEnd, SendMessageOptions.DontRequireReceiver);

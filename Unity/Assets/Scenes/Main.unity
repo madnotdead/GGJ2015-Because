@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 167472, guid: c53a763fd2a7afe4d9b1e11bf615c551, type: 2}
-  AudioClip: {fileID: 8300000, guid: 4cb8f665e99694b43b72871e9fe09fde, type: 3}
+  AudioClip: {fileID: 8300000, guid: 7e8367169b831cd43bb78fbbc806efc0, type: 3}
   NoteColor: {r: .199999809, g: 0, b: 1, a: 1}
   Index: 7
 --- !u!1 &195069654
@@ -2794,7 +2794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 167472, guid: c53a763fd2a7afe4d9b1e11bf615c551, type: 2}
-  AudioClip: {fileID: 8300000, guid: 4cb8f665e99694b43b72871e9fe09fde, type: 3}
+  AudioClip: {fileID: 8300000, guid: 7e8367169b831cd43bb78fbbc806efc0, type: 3}
   NoteColor: {r: .199999809, g: 0, b: 1, a: 1}
   Index: 8
 --- !u!1001 &879860893
@@ -3924,7 +3924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 167472, guid: c53a763fd2a7afe4d9b1e11bf615c551, type: 2}
-  AudioClip: {fileID: 8300000, guid: 4cb8f665e99694b43b72871e9fe09fde, type: 3}
+  AudioClip: {fileID: 8300000, guid: 626618fb8d861d7479e3913027803b96, type: 3}
   NoteColor: {r: .657758653, g: .801470578, b: 0, a: 1}
   Index: 4
 --- !u!1 &1232479933
@@ -4293,7 +4293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 167472, guid: c53a763fd2a7afe4d9b1e11bf615c551, type: 2}
-  AudioClip: {fileID: 8300000, guid: 4cb8f665e99694b43b72871e9fe09fde, type: 3}
+  AudioClip: {fileID: 8300000, guid: 626618fb8d861d7479e3913027803b96, type: 3}
   NoteColor: {r: .657758653, g: .801470578, b: 0, a: 1}
   Index: 5
 --- !u!1 &1304602553
@@ -4587,7 +4587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 167472, guid: c53a763fd2a7afe4d9b1e11bf615c551, type: 2}
-  AudioClip: {fileID: 8300000, guid: 4cb8f665e99694b43b72871e9fe09fde, type: 3}
+  AudioClip: {fileID: 8300000, guid: 7e8367169b831cd43bb78fbbc806efc0, type: 3}
   NoteColor: {r: .199999809, g: 0, b: 1, a: 1}
   Index: 6
 --- !u!1 &1401417732
@@ -4598,6 +4598,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1401417733}
+  - 114: {fileID: 1401417734}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -4626,6 +4627,25 @@ Transform:
   - {fileID: 871409302}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1401417734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1401417732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64936098d1414546a745d233c553e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightStairs:
+  - {fileID: 818341646}
+  - {fileID: 1990037680}
+  - {fileID: 1014979671}
+  LeftStairs:
+  - {fileID: 980248409}
+  - {fileID: 725060743}
+  - {fileID: 739559087}
 --- !u!1 &1416673641
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,7 +6460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 167472, guid: c53a763fd2a7afe4d9b1e11bf615c551, type: 2}
-  AudioClip: {fileID: 8300000, guid: 4cb8f665e99694b43b72871e9fe09fde, type: 3}
+  AudioClip: {fileID: 8300000, guid: 626618fb8d861d7479e3913027803b96, type: 3}
   NoteColor: {r: .657758653, g: .801470578, b: 0, a: 1}
   Index: 3
 --- !u!1 &1932183334

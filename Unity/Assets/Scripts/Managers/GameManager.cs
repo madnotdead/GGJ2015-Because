@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 	{
         //Inicialmente el target de la camara es el escenario
 	    cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
-
 	    instance = this;
 	}
 	
@@ -53,9 +52,13 @@ public class GameManager : MonoBehaviour
 
 	    if (index > -1)
 	    {
-            Debug.Log(index);
+            if(currentPlayer!=null)
+                currentPlayer.SendMessage("SetInactive",SendMessageOptions.DontRequireReceiver);
+
 	        currentPlayer = playersList[index];
             cf.target = currentPlayer.transform;
+
+            currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
 	    }
         
 	}

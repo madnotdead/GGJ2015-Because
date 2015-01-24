@@ -10,22 +10,39 @@ public class PlayerStateManager : MonoBehaviour
     private Vector3 InitialPosition;
 
     public Animation[] animations;
+    private PlayerMovement playerMovement;
     void Awake()
     {
         InitialPosition = transform.position;
+        playerMovement = this.GetComponent<PlayerMovement>();
     }
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         switch (CurrentState)
         {
+            case PlayerState.Returning:
+                transform.position = Vector3.Lerp(transform.position, InitialPosition, Time.deltaTime * playerMovement.speed);
+
+                if (Vector3.Distance(transform.position, InitialPosition) <= 0.1f)
+                {
+                    CurrentState = PlayerState.Idle;
+                    CurrentTask = PlayerTaskType.Singing;
+                    CurrentMood = PlayerMoodTypes.Normal;
+                    this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
+                }
+                break;
+            default:
+                break;
         }
-	}
+    }
 
     [ContextMenu("Active")]
     void SetActive()
@@ -95,6 +112,7 @@ public class PlayerStateManager : MonoBehaviour
     private void ReturnToInitialPosition()
     {
         CurrentState = PlayerState.Returning;
+
     }
 
     public void OnTriggerEnter(Collider other)

@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     float camRayLength = 100f;
 
+    public bool jump = false;
+    public float jumpForce = 20f;
     //Only calls if enabled
     void Awake()
     {
@@ -30,9 +32,12 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal"); //Only possible values -1,0,1
         float v = Input.GetAxisRaw("Vertical"); //Only possible values -1,0,1
 
+        
         Move(h, v);
 
         Turning();
+
+        Jump();
 
         Animating(h, v);
     }
@@ -65,6 +70,13 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.MoveRotation(newRotation);//No need to use current rotation like rotation + newRotation
         }
 
+    }
+
+    private void Jump()
+    {
+        Debug.Log("Jumping");
+        if(Input.GetKeyDown(KeyCode.Space) && jump)
+            playerRigidbody.AddRelativeForce(0f,jumpForce,0f);
     }
 
     void Animating(float h, float v)

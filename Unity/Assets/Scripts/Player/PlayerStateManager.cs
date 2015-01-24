@@ -33,7 +33,6 @@ public class PlayerStateManager : MonoBehaviour
         switch (CurrentState)
         {
             case PlayerState.Returning:
-                this.GetComponent<Caminador>().enabled = true;
                 break;
             default:
                 break;
@@ -54,7 +53,16 @@ public class PlayerStateManager : MonoBehaviour
     }
     private void SetPlayerState(PlayerState playerState)
     {
+        PlayerState oldState = CurrentState;
         CurrentState = playerState;
+        if (CurrentState == PlayerState.Idle)
+        {
+            rigidbody.isKinematic = true;
+        }
+        else
+        {
+            rigidbody.isKinematic = false;
+        }
     }
 
     [ContextMenu("Active")]
@@ -126,6 +134,20 @@ public class PlayerStateManager : MonoBehaviour
     private void ReturnToInitialPosition()
     {
         SetPlayerState(PlayerState.Returning);
+        Caminador caminador = this.GetComponent<Caminador>();
+
+        caminador.camino.puntos.Clear();
+        if (transform.position.y < InitialPosition.position.y)
+        {
+
+            //List<Transform> transforms = WaypointHelper.getWaypointsUp();
+            caminador.camino.puntos.Add(InitialPosition);
+        }
+        else
+        {
+            caminador.camino.puntos.Add(InitialPosition);
+        }
+        this.GetComponent<Caminador>().enabled = true;
 
     }
 

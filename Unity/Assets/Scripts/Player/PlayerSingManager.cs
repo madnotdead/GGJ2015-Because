@@ -3,24 +3,28 @@ using System.Collections;
 
 public class PlayerSingManager : MonoBehaviour
 {
-    public GameObject ParticlesContainer;
+    public ParticleSystem ParticlesContainer;
     private AudioSource AudioSource;
     protected bool isSinging = false;
     private bool lastState = true;
-	// Use this for initialization
-	void Start () {
+    public Color noteColor = Color.white;
+    // Use this for initialization
+    void Start()
+    {
         AudioSource = this.GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        ParticlesContainer.startColor = noteColor;
         if (isSinging != lastState)
         {
-            ParticlesContainer.SetActive(isSinging);
+            ParticlesContainer.gameObject.SetActive(isSinging);
             AudioSource.mute = !isSinging;
             lastState = isSinging;
         }
-	}
+    }
     void PlayerSelected()
     {
         isSinging = false;
@@ -28,5 +32,7 @@ public class PlayerSingManager : MonoBehaviour
     void Sing()
     {
         isSinging = true;
+        if (!AudioSource.isPlaying)
+            AudioSource.Play();
     }
 }

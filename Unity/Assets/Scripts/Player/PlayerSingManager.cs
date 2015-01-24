@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerSingManager : MonoBehaviour
 {
     public GameObject ParticlesContainer;
-    public AudioSource AudioSource;
+    private AudioSource AudioSource;
     protected bool isSinging = true;
     private bool lastState = true;
 	// Use this for initialization

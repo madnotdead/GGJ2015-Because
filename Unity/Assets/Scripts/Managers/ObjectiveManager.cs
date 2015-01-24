@@ -46,6 +46,7 @@ public class ObjectiveManager : MonoBehaviour
     // Update is called once per frame
 	void Update ()
 	{
+	    if (GameManager.instance.currentPlayer == null) return;
 
 	    var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
 

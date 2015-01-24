@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerEnum.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSingManager.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />

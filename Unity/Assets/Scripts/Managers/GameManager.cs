@@ -11,11 +11,16 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
     private int index = -1;
 	// Use this for initialization
+
+    void Awake()
+    {
+        instance = this;
+    }
 	void Start ()
 	{
         //Inicialmente el target de la camara es el escenario
-	    cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
-	    instance = this;
+        cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+        instance = this;
 	}
 	
 	// Update is called once per frame

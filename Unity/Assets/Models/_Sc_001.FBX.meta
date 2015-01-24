@@ -1,80 +1,66 @@
 fileFormatVersion: 2
-guid: 7119b8606ec9a3e4c9bcac3cf26ac9a1
+guid: ee32595981d7f204095b9bf21481a414
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Line01
-    100002: Loft02
-    100004: Object14137
-    100006: Object14138
-    100008: Object14139
-    100010: Object14140
-    100012: Object14141
-    100014: Object14145
-    100016: Object14148
-    100018: Object14151
-    100020: Object14152
-    100022: Object14153
-    100024: Object14154
-    100026: Object14155
-    100028: Object14156
-    100030: Object14157
-    100032: Object14158
-    100034: Object14159
-    100036: Object14160
-    100038: Object14161
-    100040: Object14162
-    100042: Object14163
-    100044: Object14164
-    100046: Object14198
-    100048: Object14199
-    100050: Object14200
-    100052: Object14201
-    100054: Rectangle01
-    100056: //RootNode
-    100058: Object14202
-    100060: Object14203
-    100062: Object14204
-    100064: Object14205
-    100066: Object14206
-    100068: Object14207
-    100070: Object14208
-    400000: Line01
-    400002: Loft02
-    400004: Object14137
-    400006: Object14138
-    400008: Object14139
-    400010: Object14140
-    400012: Object14141
-    400014: Object14145
-    400016: Object14148
-    400018: Object14151
-    400020: Object14152
-    400022: Object14153
-    400024: Object14154
-    400026: Object14155
-    400028: Object14156
-    400030: Object14157
-    400032: Object14158
-    400034: Object14159
-    400036: Object14160
-    400038: Object14161
-    400040: Object14162
-    400042: Object14163
-    400044: Object14164
-    400046: Object14198
-    400048: Object14199
-    400050: Object14200
-    400052: Object14201
-    400054: Rectangle01
-    400056: //RootNode
-    400058: Object14202
-    400060: Object14203
-    400062: Object14204
-    400064: Object14205
-    400066: Object14206
-    400068: Object14207
-    400070: Object14208
+    100000: //RootNode
+    100002: Line01
+    100004: Loft02
+    100006: Object14137
+    100008: Object14138
+    100010: Object14139
+    100012: Object14140
+    100014: Object14141
+    100016: Object14145
+    100018: Object14148
+    100020: Object14151
+    100022: Object14152
+    100024: Object14153
+    100026: Object14154
+    100028: Object14155
+    100030: Object14156
+    100032: Object14157
+    100034: Object14158
+    100036: Object14159
+    100038: Object14160
+    100040: Object14161
+    100042: Object14162
+    100044: Object14163
+    100046: Object14164
+    100048: Object14198
+    100050: Object14199
+    100052: Object14200
+    100054: Object14201
+    100056: Rectangle01
+    400000: //RootNode
+    400002: Line01
+    400004: Loft02
+    400006: Object14137
+    400008: Object14138
+    400010: Object14139
+    400012: Object14140
+    400014: Object14141
+    400016: Object14145
+    400018: Object14148
+    400020: Object14151
+    400022: Object14152
+    400024: Object14153
+    400026: Object14154
+    400028: Object14155
+    400030: Object14156
+    400032: Object14157
+    400034: Object14158
+    400036: Object14159
+    400038: Object14160
+    400040: Object14161
+    400042: Object14162
+    400044: Object14163
+    400046: Object14164
+    400048: Object14198
+    400050: Object14199
+    400052: Object14200
+    400054: Object14201
+    400056: Rectangle01
     2300000: Loft02
     2300002: Object14137
     2300004: Object14138
@@ -99,13 +85,6 @@ ModelImporter:
     2300042: Object14199
     2300044: Object14200
     2300046: Object14201
-    2300048: Object14202
-    2300050: Object14203
-    2300052: Object14204
-    2300054: Object14205
-    2300056: Object14206
-    2300058: Object14207
-    2300060: Object14208
     3300000: Loft02
     3300002: Object14137
     3300004: Object14138
@@ -130,13 +109,6 @@ ModelImporter:
     3300042: Object14199
     3300044: Object14200
     3300046: Object14201
-    3300048: Object14202
-    3300050: Object14203
-    3300052: Object14204
-    3300054: Object14205
-    3300056: Object14206
-    3300058: Object14207
-    3300060: Object14208
     4300000: Loft02
     4300002: Object14137
     4300004: Object14138
@@ -161,13 +133,6 @@ ModelImporter:
     4300042: Object14199
     4300044: Object14200
     4300046: Object14201
-    4300048: Object14202
-    4300050: Object14203
-    4300052: Object14204
-    4300054: Object14205
-    4300056: Object14206
-    4300058: Object14207
-    4300060: Object14208
     9500000: //RootNode
   materials:
     importMaterials: 1

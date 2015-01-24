@@ -7,13 +7,12 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerTaskType CurrentTask = PlayerTaskType.Singing;
     public PlayerMoodTypes CurrentMood = PlayerMoodTypes.Normal;
 
-    private Vector3 InitialPosition;
+    public Transform InitialPosition;
 
     public Animation[] animations;
     private PlayerMovement playerMovement;
     void Awake()
     {
-        InitialPosition = transform.position;
         playerMovement = this.GetComponent<PlayerMovement>();
     }
     // Use this for initialization
@@ -33,21 +32,21 @@ public class PlayerStateManager : MonoBehaviour
         switch (CurrentState)
         {
             case PlayerState.Returning:
-                transform.position = Vector3.Lerp(transform.position, InitialPosition, Time.deltaTime * playerMovement.speed);
-
-                if (Vector3.Distance(transform.position, InitialPosition) <= 0.1f)
-                {
-                    SetPlayerState(PlayerState.Idle);
-                    CurrentTask = PlayerTaskType.Singing;
-                    CurrentMood = PlayerMoodTypes.Normal;
-                    this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
-                }
+                if (this.GetComponent<Caminador>().camino.puntos.Count==0)
+                    this.GetComponent<Caminador>().AddPunto(InitialPosition);
                 break;
             default:
                 break;
         }
     }
-
+    public void PlayerIsBackToPosition()
+    {
+        this.GetComponent<Caminador>().camino.puntos.Clear();
+        SetPlayerState(PlayerState.Idle);
+        CurrentTask = PlayerTaskType.Singing;
+        CurrentMood = PlayerMoodTypes.Normal;
+        this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
+    }
     private void SetPlayerState(PlayerState playerState)
     {
         CurrentState = playerState;

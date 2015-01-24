@@ -17,6 +17,8 @@ public class Objective
     public Transform target;
     public ObjectiveAnimation[] animations;
     public float distance = 1;
+    public float time;
+    public KeyCode key;
 }
 
 
@@ -28,7 +30,7 @@ public class ObjectiveManager : MonoBehaviour
 
     public static ObjectiveManager instance;
     private int currentObjective;
-
+    private float currentTime;
 	// Use this for initialization
 	void Start ()
 	{
@@ -45,6 +47,17 @@ public class ObjectiveManager : MonoBehaviour
 	void Update ()
 	{
 
+	    var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
+
+	    if (!(distance <= GetCurrenteObjective.distance)) return;
+	    
+        //Objective logic
+	    if (!Input.GetKeyDown(GetCurrenteObjective.key)) return;
+
+	    if (currentTime < GetCurrenteObjective.time)
+	        currentTime += Time.deltaTime;
+	    else
+	        currentObjective = UnityEngine.Random.Range(0, objectives.Length);
 	}
 }
 

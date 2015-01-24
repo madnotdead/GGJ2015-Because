@@ -27,21 +27,21 @@ public class PlayerStateManager : MonoBehaviour
         }
 	}
 
+    [ContextMenu("Active")]
     void SetActive()
     {
         switch (CurrentState)
         {
             case PlayerState.Idle:
-                EnableMovement();
+                this.SendMessage("PlayerSelected", SendMessageOptions.DontRequireReceiver);
+                CurrentState = PlayerState.Active;
                 break;
             case PlayerState.Active:
-                EnableMovement();
                 break;
             case PlayerState.Working:
-                EnableMovement();
                 break;
             case PlayerState.Returning:
-                EnableMovement();
+                this.SendMessage("PlayerSelected", SendMessageOptions.DontRequireReceiver);
                 CurrentState = PlayerState.Active;
                 break;
             case PlayerState.Unconscious:
@@ -50,6 +50,7 @@ public class PlayerStateManager : MonoBehaviour
                 break;
         }
     }
+    [ContextMenu("Inactive")]
     void SetInactive()
     {
         DisableMovement();
@@ -73,7 +74,10 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
-
+    private void PlayerSelected()
+    {
+        EnableMovement();
+    }
     private void EnableMovement()
     {
         this.GetComponent<PlayerMovement>().enabled = true;
@@ -85,11 +89,26 @@ public class PlayerStateManager : MonoBehaviour
 
     private void CancelTask()
     {
-        Debug.Log("Caneling task");
+        Debug.Log("Canceling task");
     }
 
     private void ReturnToInitialPosition()
     {
         CurrentState = PlayerState.Returning;
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entering trigger");
+        if (other.collider.CompareTag("Stairs"))
+        {
+            Debug.Log("In  Stairs");
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Leaving trigger");
+    }
+
 }

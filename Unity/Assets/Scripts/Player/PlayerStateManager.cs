@@ -41,11 +41,16 @@ public class PlayerStateManager : MonoBehaviour
     }
     public void PlayerIsBackToPosition()
     {
-        this.GetComponent<Caminador>().enabled = false;
+        StopReturning();
         SetPlayerState(PlayerState.Idle);
         CurrentTask = PlayerTaskType.Singing;
         CurrentMood = PlayerMoodTypes.Normal;
         this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
+    }
+
+    private void StopReturning()
+    {
+        this.GetComponent<Caminador>().enabled = false;
     }
     private void SetPlayerState(PlayerState playerState)
     {
@@ -67,6 +72,7 @@ public class PlayerStateManager : MonoBehaviour
                 break;
             case PlayerState.Returning:
                 this.SendMessage("PlayerSelected", SendMessageOptions.DontRequireReceiver);
+                StopReturning();
                 SetPlayerState(PlayerState.Active);
                 break;
             case PlayerState.Unconscious:

@@ -48,17 +48,31 @@ public class ObjectiveManager : MonoBehaviour
 	{
 	    if (GameManager.instance.currentPlayer == null) return;
 
-	    var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
+	    GetCurrenteObjective.target.gameObject.SetActive(true);
+
+        var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
 
 	    if (!(distance <= GetCurrenteObjective.distance)) return;
 	    
         //Objective logic
 	    if (!Input.GetKeyDown(GetCurrenteObjective.key)) return;
 
+        Debug.Log(currentTime);
+        Debug.Log(GetCurrenteObjective.time);
+
 	    if (currentTime < GetCurrenteObjective.time)
 	        currentTime += Time.deltaTime;
 	    else
-	        currentObjective = UnityEngine.Random.Range(0, objectives.Length);
+	    {
+	        currentTime = 0;
+            Debug.Log("Desactivate");
+            GetCurrenteObjective.target.gameObject.SetActive(false);
+	        GetCurrenteObjective.target.collider.enabled = false;
+            Debug.Log(currentObjective);
+            currentObjective = UnityEngine.Random.Range(0, objectives.Length);
+            Debug.Log(currentObjective);
+	    }
+	    
 	}
 }
 

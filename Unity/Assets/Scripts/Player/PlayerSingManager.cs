@@ -11,7 +11,13 @@ public class PlayerSingManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        AudioSource = this.GetComponent<AudioSource>();
+        AudioSource = GetAudioSource();
+    }
+
+    private AudioSource GetAudioSource()
+    {
+        AudioSource =  AudioSource ?? this.GetComponent<AudioSource>();
+        return AudioSource;
     }
 
     // Update is called once per frame
@@ -32,7 +38,7 @@ public class PlayerSingManager : MonoBehaviour
     void Sing()
     {
         isSinging = true;
-        if (!AudioSource.isPlaying)
-            AudioSource.Play();
+        if (!GetAudioSource().isPlaying)
+            GetAudioSource().Play();
     }
 }

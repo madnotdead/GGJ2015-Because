@@ -30,11 +30,10 @@ public class Caminador : MonoBehaviour
                 direccion = -direccion;
                 puntoActual += direccion;
 
-                Debug.Log("Siguiente punto!");
             }
             else
             {
-                Debug.Log("TERMINA CARAJO");
+                puntoActual = 0;
                 SendMessage(MessageToEnd, SendMessageOptions.DontRequireReceiver);
             }
         }
@@ -42,7 +41,6 @@ public class Caminador : MonoBehaviour
     public void AddPunto(Transform point)
     {
         if (camino.puntos == null) camino.puntos = new System.Collections.Generic.List<Transform>();
-        Debug.Log("Añado punto!");
         camino.puntos.Add(point);
     }
 }

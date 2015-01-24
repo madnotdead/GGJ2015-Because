@@ -23,6 +23,7 @@ public class PlayerStateManager : MonoBehaviour
             this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
             DisableMovement();
         }
+        this.GetComponent<Caminador>().AddPunto(InitialPosition);
     }
 
     // Update is called once per frame
@@ -32,8 +33,7 @@ public class PlayerStateManager : MonoBehaviour
         switch (CurrentState)
         {
             case PlayerState.Returning:
-                if (this.GetComponent<Caminador>().camino.puntos.Count==0)
-                    this.GetComponent<Caminador>().AddPunto(InitialPosition);
+                this.GetComponent<Caminador>().enabled = true;
                 break;
             default:
                 break;
@@ -41,7 +41,7 @@ public class PlayerStateManager : MonoBehaviour
     }
     public void PlayerIsBackToPosition()
     {
-        this.GetComponent<Caminador>().camino.puntos.Clear();
+        this.GetComponent<Caminador>().enabled = false;
         SetPlayerState(PlayerState.Idle);
         CurrentTask = PlayerTaskType.Singing;
         CurrentMood = PlayerMoodTypes.Normal;

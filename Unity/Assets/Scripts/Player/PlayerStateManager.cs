@@ -19,7 +19,11 @@ public class PlayerStateManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        if (CurrentState == PlayerState.Idle)
+        { 
+            this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
+            DisableMovement();
+        }
     }
 
     // Update is called once per frame

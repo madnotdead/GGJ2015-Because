@@ -5,7 +5,7 @@ public class PlayerSingManager : MonoBehaviour
 {
     public GameObject ParticlesContainer;
     private AudioSource AudioSource;
-    protected bool isSinging = true;
+    protected bool isSinging = false;
     private bool lastState = true;
 	// Use this for initialization
 	void Start () {

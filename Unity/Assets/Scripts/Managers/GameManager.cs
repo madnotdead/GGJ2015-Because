@@ -6,15 +6,17 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerGameObject;//prefab de player
     public GameObject[] playersList;//lista de players
-    private GameObject currentPlayer;//player seleccionado
+    public GameObject currentPlayer;//player seleccionado
     public CameraFollow cf;//camara para target
-
+    static public GameManager instance;
     private int index = -1;
 	// Use this for initialization
 	void Start ()
 	{
         //Inicialmente el target de la camara es el escenario
-	    cf.target = GameObject.FindGameObjectWithTag("Scenario").transform; 
+	    cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+
+	    instance = this;
 	}
 	
 	// Update is called once per frame
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
 
 	    if (index > -1)
 	    {
+            Debug.Log(index);
 	        currentPlayer = playersList[index];
             cf.target = currentPlayer.transform;
 	    }

@@ -1338,6 +1338,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &286933084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,6 +1633,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1001 &386232412
 Prefab:
   m_ObjectHideFlags: 0
@@ -1854,6 +1856,58 @@ MeshFilter:
   m_PrefabInternal: {fileID: 571995878}
   m_GameObject: {fileID: 460870629}
   m_Mesh: {fileID: 4300200, guid: 7119b8606ec9a3e4c9bcac3cf26ac9a1, type: 3}
+--- !u!1 &484838536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 484838538}
+  - 114: {fileID: 484838537}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &484838537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 484838536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5569f31df97a8c1428ddcb3bd0ff522a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGameObject: {fileID: 167472, guid: c53a763fd2a7afe4d9b1e11bf615c551, type: 2}
+  playersList:
+  - {fileID: 233087759}
+  - {fileID: 1181230015}
+  - {fileID: 1800170183}
+  - {fileID: 1024120490}
+  - {fileID: 1640296004}
+  - {fileID: 347126808}
+  - {fileID: 1446686937}
+  - {fileID: 2047695330}
+  - {fileID: 767299364}
+  currentPlayer: {fileID: 0}
+  cf: {fileID: 1562572150}
+--- !u!4 &484838538
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 484838536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.55716443, y: -3.29920387, z: 17.5158195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1 &485035398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,6 +2271,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d0371e49e66fb9f4e8459141b6916666, type: 2}
+    - target: {fileID: 100240, guid: 7119b8606ec9a3e4c9bcac3cf26ac9a1, type: 3}
+      propertyPath: m_TagString
+      value: Scenario
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7119b8606ec9a3e4c9bcac3cf26ac9a1, type: 3}
   m_RootGameObject: {fileID: 1646687209}
@@ -5210,6 +5268,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &780668128
 GameObject:
   m_ObjectHideFlags: 0
@@ -6316,6 +6375,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &1041004541
 GameObject:
   m_ObjectHideFlags: 0
@@ -8738,6 +8798,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &1182751992
 GameObject:
   m_ObjectHideFlags: 0
@@ -12867,6 +12928,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &1479542661
 GameObject:
   m_ObjectHideFlags: 0
@@ -13266,7 +13328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e724877ec93a74b9d9e7f0ad7012ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 233087764}
+  target: {fileID: 0}
   positionOffset: {x: 0, y: 3, z: -6}
   ease: 5
   lookAt: 1
@@ -16170,6 +16232,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &1645603480
 GameObject:
   m_ObjectHideFlags: 0
@@ -16239,7 +16302,7 @@ GameObject:
   - 95: {fileID: 1646687211}
   m_Layer: 0
   m_Name: Scenario
-  m_TagString: Untagged
+  m_TagString: Scenario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17081,6 +17144,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &1809386109
 GameObject:
   m_ObjectHideFlags: 0
@@ -19354,6 +19418,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  animations: []
 --- !u!1 &2057009101
 GameObject:
   m_ObjectHideFlags: 0

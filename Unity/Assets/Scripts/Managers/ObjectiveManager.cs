@@ -38,7 +38,7 @@ public class ObjectiveManager : MonoBehaviour
 	    currentObjective = 0;
 	}
 
-    public Objective GetCurrenteObjective
+    public Objective GetCurrentObjective
     {
         get { return objectives[currentObjective]; }
     }
@@ -47,15 +47,15 @@ public class ObjectiveManager : MonoBehaviour
 	void Update ()
 	{
 	    if (GameManager.instance.currentPlayer == null) return;
+        if (GetCurrentObjective.target == null) return;
+	    var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrentObjective.target.position);
 
-	    var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
-
-	    if (!(distance <= GetCurrenteObjective.distance)) return;
+	    if (!(distance <= GetCurrentObjective.distance)) return;
 	    
         //Objective logic
-	    if (!Input.GetKeyDown(GetCurrenteObjective.key)) return;
+	    if (!Input.GetKeyDown(GetCurrentObjective.key)) return;
 
-	    if (currentTime < GetCurrenteObjective.time)
+	    if (currentTime < GetCurrentObjective.time)
 	        currentTime += Time.deltaTime;
 	    else
 	        currentObjective = UnityEngine.Random.Range(0, objectives.Length);

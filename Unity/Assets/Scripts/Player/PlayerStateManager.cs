@@ -37,7 +37,7 @@ public class PlayerStateManager : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, InitialPosition) <= 0.1f)
                 {
-                    CurrentState = PlayerState.Idle;
+                    SetPlayerState(PlayerState.Idle);
                     CurrentTask = PlayerTaskType.Singing;
                     CurrentMood = PlayerMoodTypes.Normal;
                     this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
@@ -48,6 +48,11 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
+    private void SetPlayerState(PlayerState playerState)
+    {
+        CurrentState = playerState;
+    }
+
     [ContextMenu("Active")]
     void SetActive()
     {
@@ -55,7 +60,7 @@ public class PlayerStateManager : MonoBehaviour
         {
             case PlayerState.Idle:
                 this.SendMessage("PlayerSelected", SendMessageOptions.DontRequireReceiver);
-                CurrentState = PlayerState.Active;
+                SetPlayerState(PlayerState.Active);
                 break;
             case PlayerState.Active:
                 break;
@@ -63,7 +68,7 @@ public class PlayerStateManager : MonoBehaviour
                 break;
             case PlayerState.Returning:
                 this.SendMessage("PlayerSelected", SendMessageOptions.DontRequireReceiver);
-                CurrentState = PlayerState.Active;
+                SetPlayerState(PlayerState.Active);
                 break;
             case PlayerState.Unconscious:
                 break;
@@ -115,7 +120,7 @@ public class PlayerStateManager : MonoBehaviour
 
     private void ReturnToInitialPosition()
     {
-        CurrentState = PlayerState.Returning;
+        SetPlayerState(PlayerState.Returning);
 
     }
 

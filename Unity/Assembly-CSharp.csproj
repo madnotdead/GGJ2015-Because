@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FallingCeilingScript.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ObjectiveManager.cs" />
@@ -56,6 +57,7 @@
      <Compile Include="Assets\Scripts\Player\MovingSaw.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerEnum.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerPuppeteer.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerSingManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStateManager.cs" />

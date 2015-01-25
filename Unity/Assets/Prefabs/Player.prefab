@@ -367,7 +367,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.908113718, y: 1.62517452, z: 1.0127393}
+  m_LocalPosition: {x: .46791774, y: 2.8776412, z: -5.2949276}
   m_LocalScale: {x: .300000012, y: 1, z: .300000012}
   m_Children:
   - {fileID: 410350}
@@ -440,7 +440,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -532,7 +532,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParticlesContainer: {fileID: 19810350}
+  MouthRenderer: {fileID: 21243402}
   noteColor: {r: .696627736, g: .681985319, b: .875, a: 1}
+  worried: {fileID: 21300000, guid: 222510d08437a984ab0e76424818a07d, type: 3}
 --- !u!114 &11467472
 MonoBehaviour:
   m_ObjectHideFlags: 1

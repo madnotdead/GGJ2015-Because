@@ -5,9 +5,11 @@ public class PlayerSingManager : MonoBehaviour
 {
     public ParticleSystem ParticlesContainer;
     private AudioSource AudioSource;
+    public SpriteRenderer MouthRenderer;
     protected bool isSinging = false;
     private bool lastState = true;
     public Color noteColor = Color.white;
+    public Sprite worried;
     // Use this for initialization
     void Start()
     {
@@ -33,12 +35,32 @@ public class PlayerSingManager : MonoBehaviour
     }
     void PlayerSelected()
     {
-        isSinging = false;
+        StopSinging();
     }
     void Sing()
     {
         isSinging = true;
         if (!GetAudioSource().isPlaying)
             GetAudioSource().Play();
+        UpdateMouths();
+    }
+    void StopSinging()
+    {
+        isSinging = false;
+
+        UpdateMouths();
+    }
+
+    public void UpdateMouths()
+    {
+        if (isSinging)
+        {
+            MouthRenderer.sprite = GetComponentInParent<PlayerPuppeteer>().currentMouth;
+            Debug.Log(GetComponentInParent<PlayerPuppeteer>().currentMouth);
+        }
+        else
+        {
+            MouthRenderer.sprite = worried;
+        }
     }
 }

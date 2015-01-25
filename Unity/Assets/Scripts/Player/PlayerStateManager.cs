@@ -14,6 +14,8 @@ public class PlayerStateManager : MonoBehaviour
     private PlayerMovement playerMovement;
 
     private bool canJump = true;
+    public Transform pupilsTransform;
+    public float eyeRange = 0.05f;
 
     public bool CanJump
     {
@@ -51,11 +53,22 @@ public class PlayerStateManager : MonoBehaviour
             case PlayerState.Returning:
                 this.GetComponent<Caminador>().enabled = true;
                 break;
+            case PlayerState.Idle:
+                UpdateEyes();
+                break;
             default:
                 break;
         }
 
         UpdateAnimator();
+    }
+
+    private void UpdateEyes()
+    {
+        GameObject selectedPlayer = GameManager.instance.currentPlayer;
+        float eyeTargetX = selectedPlayer != null ? eyeRange * (selectedPlayer.transform.position.x - transform.position.x) : 0;
+        if(Mathf.Abs(eyeTargetX) > 0.05f) eyeTargetX = 0;
+        pupilsTransform.localPosition = new Vector3(pupilsTransform.localPosition.x + ((eyeTargetX - pupilsTransform.localPosition.x) / 3), pupilsTransform.localPosition.y, pupilsTransform.localPosition.z);
     }
     public void PlayerIsBackToPosition()
     {
@@ -196,7 +209,7 @@ public class PlayerStateManager : MonoBehaviour
         Caminador caminador = this.GetComponent<Caminador>();
 
         caminador.camino.puntos.Clear();
-        if (transform.position.y < InitialPosition.position.y)
+        if (InitialPosition.position.y - transform.position.y > 0.5f)
         {
 
             Transform[] stairs = null;

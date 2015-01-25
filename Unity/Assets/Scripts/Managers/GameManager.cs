@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 	void Start ()
 	{
         //Inicialmente el target de la camara es el escenario
-        cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+        cf.target = GameObject.FindGameObjectWithTag("Console").transform;
         instance = this;
 	}
 	
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+            cf.target = GameObject.FindGameObjectWithTag("Console").transform;
         }
 	}
 

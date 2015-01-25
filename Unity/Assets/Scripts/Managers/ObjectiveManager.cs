@@ -57,8 +57,6 @@ public class ObjectiveManager : MonoBehaviour
 	        objectiveTimer += Time.deltaTime;
 	    else
 	    {
-            
-
             GetCurrenteObjective.target.gameObject.SetActive(true);
 
             if (GameManager.instance.currentPlayer == null) return;
@@ -82,7 +80,7 @@ public class ObjectiveManager : MonoBehaviour
             {
                 currentTime = 0;
                 GetCurrenteObjective.target.gameObject.SetActive(false);
-                GetCurrenteObjective.target.collider.enabled = false;
+                //GetCurrenteObjective.target.collider.enabled = false;
                 currentObjective = UnityEngine.Random.Range(0, objectives.Length);
                 objectiveTimer = 0;
                 TimeManager.instance.Next();

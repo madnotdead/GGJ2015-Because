@@ -962,6 +962,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 128222, guid: 9924808d93bb6f247ae64a50f1917e05, type: 2}
+      propertyPath: m_Name
+      value: Stage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9924808d93bb6f247ae64a50f1917e05, type: 2}
   m_RootGameObject: {fileID: 34143205}
@@ -4017,7 +4021,7 @@ GameObject:
   - 23: {fileID: 1636862258}
   - 64: {fileID: 1258522780}
   m_Layer: 8
-  m_Name: Object14139
+  m_Name: Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

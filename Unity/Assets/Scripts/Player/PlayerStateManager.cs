@@ -11,6 +11,8 @@ public class PlayerStateManager : MonoBehaviour
 
     public Animation[] animations;
     private PlayerMovement playerMovement;
+
+    public bool grounded = false;
     void Awake()
     {
         playerMovement = this.GetComponent<PlayerMovement>();
@@ -33,6 +35,7 @@ public class PlayerStateManager : MonoBehaviour
         switch (CurrentState)
         {
             case PlayerState.Returning:
+                this.GetComponent<Caminador>().enabled = true;
                 break;
             default:
                 break;
@@ -166,4 +169,13 @@ public class PlayerStateManager : MonoBehaviour
         Debug.Log("Leaving trigger");
     }
 
+    public void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "Scenario")
+        {
+            grounded = true;
+            Debug.Log("grounded:" +grounded);
+
+        }
+    }
 }

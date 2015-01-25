@@ -6,6 +6,7 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerState CurrentState = PlayerState.Idle;
     public PlayerTaskType CurrentTask = PlayerTaskType.Singing;
     public PlayerMoodTypes CurrentMood = PlayerMoodTypes.Normal;
+    public Animator playerAnimator;
 
     public Transform InitialPosition;
 
@@ -40,6 +41,8 @@ public class PlayerStateManager : MonoBehaviour
             default:
                 break;
         }
+
+        UpdateAnimator();
     }
     public void PlayerIsBackToPosition()
     {
@@ -66,6 +69,32 @@ public class PlayerStateManager : MonoBehaviour
         {
             rigidbody.isKinematic = false;
         }
+        UpdateAnimator();
+    }
+
+    public void UpdateAnimator()
+    {
+        if (CurrentState == PlayerState.Idle)
+        {
+            playerAnimator.SetBool("IsActive", false);
+            playerAnimator.SetBool("IsRunning", false);
+            playerAnimator.SetBool("IsJumping", false);
+            playerAnimator.SetBool("IsDead", false);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsActive", true);
+        }
+        if (CurrentState == PlayerState.Returning)
+        {
+            playerAnimator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsRunning", playerMovement.IsMovingRight||playerMovement.IsMovingLeft);
+        }
+        playerAnimator.SetBool("IsDead", (CurrentState == PlayerState.Unconscious));
+        playerAnimator.SetBool("IsWorking", (CurrentState == PlayerState.Working));
     }
 
     [ContextMenu("Active")]

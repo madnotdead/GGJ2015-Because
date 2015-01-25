@@ -13,7 +13,20 @@ public class PlayerStateManager : MonoBehaviour
     public Animation[] animations;
     private PlayerMovement playerMovement;
 
-    public bool grounded = false;
+    private bool canJump = true;
+
+    public bool CanJump
+    {
+        get
+        {
+            return canJump;
+        }
+        set
+        {
+            canJump = value;
+        }
+    }
+
     void Awake()
     {
         playerMovement = this.GetComponent<PlayerMovement>();
@@ -22,7 +35,7 @@ public class PlayerStateManager : MonoBehaviour
     void Start()
     {
         if (CurrentState == PlayerState.Idle)
-        { 
+        {
             this.SendMessage("Sing", SendMessageOptions.DontRequireReceiver);
             DisableMovement();
         }
@@ -84,15 +97,28 @@ public class PlayerStateManager : MonoBehaviour
         else
         {
             playerAnimator.SetBool("IsActive", true);
+            playerAnimator.SetBool("IsRunning", playerMovement.IsMoving || CurrentState == PlayerState.Returning);
+            playerAnimator.SetBool("IsJumping", rigidbody.velocity.y > 0.5f);
         }
-        if (CurrentState == PlayerState.Returning)
+
+        if (CurrentState == PlayerState.Returning || playerMovement.IsMoving)
         {
-            playerAnimator.SetBool("IsRunning", true);
+            bool movingToLeft = false;
+            if (CurrentState == PlayerState.Returning)
+            {
+                var caminador = this.GetComponent<Caminador>();
+                if (caminador.currentPunto != null)
+                {
+                    movingToLeft = (caminador.currentPunto.position.x < transform.position.x);
+                }
+            }
+            else
+            {
+                movingToLeft = playerMovement.IsMovingLeft;
+            }
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * (movingToLeft ? -1 : 1), transform.localScale.y, transform.localScale.z);
         }
-        else
-        {
-            playerAnimator.SetBool("IsRunning", playerMovement.IsMovingRight||playerMovement.IsMovingLeft);
-        }
+
         playerAnimator.SetBool("IsDead", (CurrentState == PlayerState.Unconscious));
         playerAnimator.SetBool("IsWorking", (CurrentState == PlayerState.Working));
     }
@@ -156,7 +182,7 @@ public class PlayerStateManager : MonoBehaviour
     private void DisableMovement()
     {
         this.GetComponent<PlayerMovement>().enabled = false;
-        this.grounded = false;
+        this.CanJump = false;
     }
 
     private void CancelTask()
@@ -185,30 +211,28 @@ public class PlayerStateManager : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log("Entering trigger");
-        //if (other.collider.CompareTag("Stairs"))
-        //{
-        //    Debug.Log("In  Stairs");
-        //}
-    }
-
     public void OnTriggerStay(Collider other)
     {
-        grounded = false;
-            
-        if (other.collider.tag != "Stage") return;
+        if (other.collider.tag == "Stage")
+        {
+            CanJump = true;
+        }
+    }
 
-        if(CurrentState == PlayerState.Active)
-            grounded = true;
-
-       // Debug.Log("grounded:" + grounded);
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.collider.tag == "Stage")
+        {
+            CanJump = true;
+        }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        //Debug.Log("Leaving trigger");
+        if (other.collider.tag == "Stage")
+        {
+            CanJump = false;
+        }
     }
 
 }

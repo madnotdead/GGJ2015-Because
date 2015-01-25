@@ -17,13 +17,14 @@ public class PlayerMovement : MonoBehaviour
     public bool jump = false;
     public float jumpForce = 5f;
 
-    private bool grounded = false;
+    private PlayerStateManager stateManager;
     //Only calls if enabled
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
         //anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+        stateManager = GetComponent<PlayerStateManager>();
     }
 
     void FixedUpdate()
@@ -34,13 +35,16 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal"); //Only possible values -1,0,1
         float v = Input.GetAxisRaw("Vertical"); //Only possible values -1,0,1
 
-        grounded = GetComponent<PlayerStateManager>().grounded;
-        
         Move(h, v);
 
         Turning();
 
         Jump();
+
+        IsMovingRight = h > 0;
+        IsMovingLeft = h < 0;
+        IsMovingUp = v < 0;
+        IsMovingDown = v > 0;
 
         Animating(h, v);
     }
@@ -77,12 +81,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        //Debug.Log("Jumping");
+        if (Input.GetKeyDown(KeyCode.Space))
+            Debug.Log(string.Format("Jumping. Can Jump: {0}. KeyDown: {1}", stateManager.CanJump, Input.GetKeyDown(KeyCode.Space)));
 
-        if (!grounded) return;
+        if (!stateManager.CanJump) return;
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
-        GetComponent<PlayerStateManager>().grounded = false;
+        stateManager.CanJump = false;
         playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, jumpForce);
     }
 
@@ -91,6 +96,22 @@ public class PlayerMovement : MonoBehaviour
         bool walking = h != 0f || v != 0f;
 
         //anim.SetBool("IsWalking", walking);
+    }
+
+    public bool IsMovingDown;
+
+    public bool IsMovingUp;
+
+    public bool IsMovingLeft;
+
+    public bool IsMovingRight;
+
+    public bool IsMoving
+    {
+        get
+        {
+            return IsMovingDown | IsMovingRight | IsMovingLeft | IsMovingUp;
+        }
     }
 }
 

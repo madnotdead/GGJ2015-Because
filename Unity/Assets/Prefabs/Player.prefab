@@ -117,7 +117,7 @@ GameObject:
   - 114: {fileID: 11451090}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camino: {fileID: 11494494}
+  currentPunto: {fileID: 0}
   puntoActual: 0
   velocidad: 6
   distanciaLlegada: .100000001
@@ -400,7 +401,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   jump: 0
-  jumpForce: 20
+  jumpForce: 7
+  IsMovingDown: 0
+  IsMovingUp: 0
+  IsMovingLeft: 0
+  IsMovingRight: 0
 --- !u!114 &11479732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,6 +420,7 @@ MonoBehaviour:
   CurrentState: 0
   CurrentTask: 0
   CurrentMood: 0
+  playerAnimator: {fileID: 9510604}
   InitialPosition: {fileID: 0}
   animations: []
   grounded: 0
@@ -1548,7 +1554,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: ebef64f00e229d54a87e3f5db1fd471a, type: 3}
   m_Color: {r: .852941155, g: .852941155, b: .852941155, a: 1}
 --- !u!212 &21218532

@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
 	    if (Input.GetKeyDown(KeyCode.Alpha1))
 	        index = 0;
 
@@ -55,22 +54,22 @@ public class GameManager : MonoBehaviour
             index = 8;
 
 
-	    if (index > -1)
-	    {
-            if(currentPlayer!=null)
-                currentPlayer.SendMessage("SetInactive",SendMessageOptions.DontRequireReceiver);
-
-	        currentPlayer = playersList[index];
+        if (index > -1)
+        {
+            currentPlayer = playersList[index];
             cf.target = currentPlayer.transform;
 
             currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
-	    }
-	    else
-	        cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+        }
+        else
+        {
+            cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+        }
 	}
 
     public void ObjectiveCompleted()
     {
+        Debug.Log("Objective completed");
         currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
         index = -1;
     }

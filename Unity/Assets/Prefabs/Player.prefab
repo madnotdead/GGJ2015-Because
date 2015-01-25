@@ -570,6 +570,8 @@ MonoBehaviour:
   playerAnimator: {fileID: 9510604}
   InitialPosition: {fileID: 0}
   animations: []
+  pupilsTransform: {fileID: 443402}
+  eyeRange: .0299999993
 --- !u!114 &11494494
 MonoBehaviour:
   m_ObjectHideFlags: 1

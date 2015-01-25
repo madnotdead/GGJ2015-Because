@@ -21,6 +21,7 @@ public class PanelScript : MonoBehaviour {
     public void OnDisable()
     {
         animator.gameObject.transform.rotation = initialRotation;
+        animator.SetBool("Idling", true);
     }
 
 

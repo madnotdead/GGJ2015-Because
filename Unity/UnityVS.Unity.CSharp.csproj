@@ -51,11 +51,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FallingCeilingScript.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Intro.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ObjectiveManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Objectives\ConsoleScript.cs" />
+    <Compile Include="Assets\Scripts\Objectives\FallingCeilingScript.cs" />
     <Compile Include="Assets\Scripts\Objectives\PanelScript.cs" />
     <Compile Include="Assets\Scripts\Player\Caminador.cs" />
     <Compile Include="Assets\Scripts\Player\Camino.cs" />
@@ -67,7 +69,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateManager.cs" />
     <Compile Include="Assets\Scripts\Player\WaypointHelper.cs" />
-    <Compile Include="Assets\TimeManager.cs" />
     <None Include="Assets\Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />

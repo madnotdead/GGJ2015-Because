@@ -116,7 +116,7 @@ GameObject:
   - 114: {fileID: 11451090}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,6 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  jump: 0
+  jumpForce: 7
 --- !u!114 &11479732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,6 +372,7 @@ MonoBehaviour:
   CurrentMood: 0
   InitialPosition: {fileID: 0}
   animations: []
+  grounded: 0
 --- !u!114 &11494494
 MonoBehaviour:
   m_ObjectHideFlags: 1

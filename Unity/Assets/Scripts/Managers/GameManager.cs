@@ -65,6 +65,13 @@ public class GameManager : MonoBehaviour
 
             currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
 	    }
-        
+	    else
+	        cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
 	}
+
+    public void ObjectiveCompleted()
+    {
+        currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
+        index = -1;
+    }
 }

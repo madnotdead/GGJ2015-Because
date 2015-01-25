@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateManager.cs" />
     <Compile Include="Assets\Scripts\Player\WaypointHelper.cs" />
+    <Compile Include="Assets\TimeManager.cs" />
     <None Include="Assets\Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />

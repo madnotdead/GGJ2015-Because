@@ -57,16 +57,18 @@ public class GameManager : MonoBehaviour
 
 	    if (index > -1)
 	    {
-            if(currentPlayer!=null)
-                currentPlayer.SendMessage("SetInactive",SendMessageOptions.DontRequireReceiver);
-
 	        currentPlayer = playersList[index];
-            cf.target = currentPlayer.transform;
+	        cf.target = currentPlayer.transform;
 
-            currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
+	        currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
 	    }
 	    else
-	        cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+	    {
+            cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
+            if (currentPlayer != null)
+                currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
+	    }
+	    
 	}
 
     public void ObjectiveCompleted()

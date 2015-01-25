@@ -47,8 +47,7 @@ public class ObjectiveManager : MonoBehaviour
     // Update is called once per frame
 	void Update ()
 	{
-	    if (GameManager.instance.currentPlayer == null) return;
-
+	    
 	    if (!TimeManager.instance.TimeLeft) return;
 
         Debug.Log("CurrentTime: " + TimeManager.instance.CurrentTime);
@@ -58,10 +57,14 @@ public class ObjectiveManager : MonoBehaviour
 	        objectiveTimer += Time.deltaTime;
 	    else
 	    {
+            
+
             GetCurrenteObjective.target.gameObject.SetActive(true);
 
-            var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
+            if (GameManager.instance.currentPlayer == null) return;
 
+            var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
+            Debug.Log("distance: " + distance);
             if (!(distance <= GetCurrenteObjective.distance)) return;
 
             //Objective logic

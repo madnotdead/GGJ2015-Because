@@ -26,7 +26,6 @@ public class FallingCeilingScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        //if (col.collider.tag == "Player")
-        //    transform.parent = col.transform;
+        audio.PlayOneShot(audio.clip);
     }
 }

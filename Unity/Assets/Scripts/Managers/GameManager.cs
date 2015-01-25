@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject currentPlayer;//player seleccionado
     public CameraFollow cf;//camara para target
     static public GameManager instance;
+    private int LastIndex = -1;
     private int index = -1;
 	// Use this for initialization
 
@@ -26,7 +27,6 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
 	    if (Input.GetKeyDown(KeyCode.Alpha1))
 	        index = 0;
 
@@ -55,25 +55,33 @@ public class GameManager : MonoBehaviour
             index = 8;
 
 
-	    if (index > -1)
-	    {
-	        currentPlayer = playersList[index];
-	        cf.target = currentPlayer.transform;
+        if (index > -1)
+        {
+            if (LastIndex > -1 && LastIndex!=index && currentPlayer!=null)
+            {
+                InactiveCurrentPlayer();
+            }
+            currentPlayer = playersList[index];
+            cf.target = currentPlayer.transform;
 
-	        currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
-	    }
-	    else
-	    {
+            currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
+            LastIndex = index;
+        }
+        else
+        {
             cf.target = GameObject.FindGameObjectWithTag("Scenario").transform;
-            if (currentPlayer != null)
-                currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
-	    }
-	    
+        }
 	}
 
     public void ObjectiveCompleted()
     {
-        currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
+        Debug.Log("Objective completed");
+        InactiveCurrentPlayer();
         index = -1;
+    }
+
+    private void InactiveCurrentPlayer()
+    {
+        currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
     }
 }

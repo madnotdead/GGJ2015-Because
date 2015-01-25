@@ -50,8 +50,8 @@ public class ObjectiveManager : MonoBehaviour
 	    
 	    if (!TimeManager.instance.TimeLeft) return;
 
-        Debug.Log("CurrentTime: " + TimeManager.instance.CurrentTime);
-        Debug.Log("objectiveTimer: " + objectiveTimer);
+        //Debug.Log("CurrentTime: " + TimeManager.instance.CurrentTime);
+        //Debug.Log("objectiveTimer: " + objectiveTimer);
 
 	    if (objectiveTimer < TimeManager.instance.CurrentTime)
 	        objectiveTimer += Time.deltaTime;

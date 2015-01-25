@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject currentPlayer;//player seleccionado
     public CameraFollow cf;//camara para target
     static public GameManager instance;
+    private int LastIndex = -1;
     private int index = -1;
 	// Use this for initialization
 
@@ -56,10 +57,15 @@ public class GameManager : MonoBehaviour
 
         if (index > -1)
         {
+            if (LastIndex > -1 && LastIndex!=index && currentPlayer!=null)
+            {
+                InactiveCurrentPlayer();
+            }
             currentPlayer = playersList[index];
             cf.target = currentPlayer.transform;
 
             currentPlayer.SendMessage("SetActive", SendMessageOptions.DontRequireReceiver);
+            LastIndex = index;
         }
         else
         {
@@ -70,7 +76,12 @@ public class GameManager : MonoBehaviour
     public void ObjectiveCompleted()
     {
         Debug.Log("Objective completed");
-        currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
+        InactiveCurrentPlayer();
         index = -1;
+    }
+
+    private void InactiveCurrentPlayer()
+    {
+        currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
     }
 }

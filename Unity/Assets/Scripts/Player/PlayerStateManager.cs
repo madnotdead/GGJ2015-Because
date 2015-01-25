@@ -61,6 +61,16 @@ public class PlayerStateManager : MonoBehaviour
         }
 
         UpdateAnimator();
+
+        if (GameManager.instance.IsPlaying && !audio.isPlaying)
+        {
+            GameManager.instance.Lose();
+        }
+    }
+    [ContextMenu("Stop")]
+    public void StopAudio()
+    {
+        audio.Stop();
     }
 
     private void UpdateEyes()

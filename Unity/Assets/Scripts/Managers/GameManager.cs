@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
     private int LastIndex = -1;
     private int index = -1;
+    public bool IsPlaying = true;
+
+    public GameObject Placa;
 	// Use this for initialization
 
     void Awake()
@@ -83,5 +86,12 @@ public class GameManager : MonoBehaviour
     private void InactiveCurrentPlayer()
     {
         currentPlayer.SendMessage("SetInactive", SendMessageOptions.DontRequireReceiver);
+    }
+
+
+    internal void Lose()
+    {
+        IsPlaying = false;
+        Placa.SetActive(true);
     }
 }

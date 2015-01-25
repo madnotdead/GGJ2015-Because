@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool jump = false;
     public float jumpForce = 20f;
+
+    private bool grounded = false;
     //Only calls if enabled
     void Awake()
     {
@@ -32,18 +34,19 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal"); //Only possible values -1,0,1
         float v = Input.GetAxisRaw("Vertical"); //Only possible values -1,0,1
 
+        grounded = GetComponent<PlayerStateManager>().grounded;
         
         Move(h, v);
 
         Turning();
 
-        Jump();
+        //Jump();
 
         Animating(h, v);
     }
 
     void Move(float h, float v)
-    {
+    {     
         movement.Set(h, 0f, v);
 
         movement = movement.normalized * speed * Time.deltaTime;
@@ -75,8 +78,12 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         Debug.Log("Jumping");
-        if(Input.GetKeyDown(KeyCode.Space) && jump)
-            playerRigidbody.AddRelativeForce(0f,jumpForce,0f);
+
+        if (!grounded) return;
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+
+        grounded = false;
+        playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 20f);
     }
 
     void Animating(float h, float v)

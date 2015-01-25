@@ -55,6 +55,7 @@
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ObjectiveManager.cs" />
     <Compile Include="Assets\Scripts\Objectives\ConsoleScript.cs" />
+    <Compile Include="Assets\Scripts\Objectives\PanelScript.cs" />
     <Compile Include="Assets\Scripts\Player\Caminador.cs" />
     <Compile Include="Assets\Scripts\Player\Camino.cs" />
     <Compile Include="Assets\Scripts\Player\MovingSaw.cs" />

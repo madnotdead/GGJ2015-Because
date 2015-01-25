@@ -966,6 +966,10 @@ Prefab:
       propertyPath: m_Name
       value: Stage
       objectReference: {fileID: 0}
+    - target: {fileID: 128222, guid: 9924808d93bb6f247ae64a50f1917e05, type: 2}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9924808d93bb6f247ae64a50f1917e05, type: 2}
   m_RootGameObject: {fileID: 34143205}
@@ -4020,9 +4024,10 @@ GameObject:
   - 33: {fileID: 1636862259}
   - 23: {fileID: 1636862258}
   - 64: {fileID: 1258522780}
+  - 65: {fileID: 1258522781}
   m_Layer: 8
   m_Name: Stage
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4082,6 +4087,18 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300006, guid: 7119b8606ec9a3e4c9bcac3cf26ac9a1, type: 3}
+--- !u!65 &1258522781
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1258522776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.32416916, y: 1.17906082, z: .412458867}
+  m_Center: {x: .010348212, y: -.262609959, z: -1.88999999}
 --- !u!1 &1262396308
 GameObject:
   m_ObjectHideFlags: 0

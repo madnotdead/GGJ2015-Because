@@ -164,18 +164,17 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.collider.tag != "Stage") return;
+
+        grounded = true;
+        Debug.Log("grounded:" + grounded);
+    }
+
     public void OnTriggerExit(Collider other)
     {
         Debug.Log("Leaving trigger");
     }
 
-    public void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.tag == "Scenario")
-        {
-            grounded = true;
-            Debug.Log("grounded:" +grounded);
-
-        }
-    }
 }

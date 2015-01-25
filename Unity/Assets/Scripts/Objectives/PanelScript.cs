@@ -5,8 +5,10 @@ public class PanelScript : MonoBehaviour {
 
     public Animator animator;
     public bool IsRight;
+    public Quaternion initialRotation;
 	// Use this for initialization
 	void Start () {
+        initialRotation = animator.gameObject.transform.rotation;
 	}
 	
 	// Update is called once per frame
@@ -15,4 +17,11 @@ public class PanelScript : MonoBehaviour {
 
         animator.SetBool("Idling", false);
 	}
+
+    public void OnDisable()
+    {
+        animator.gameObject.transform.rotation = initialRotation;
+    }
+
+
 }

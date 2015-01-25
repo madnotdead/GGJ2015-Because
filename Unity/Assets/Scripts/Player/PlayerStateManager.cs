@@ -199,7 +199,19 @@ public class PlayerStateManager : MonoBehaviour
         if (transform.position.y < InitialPosition.position.y)
         {
 
-            var stairs = transform.parent.GetComponent<WaypointHelper>().LeftStairs;
+            Transform[] stairs = null;
+            Transform[] leftStairs = transform.parent.GetComponent<WaypointHelper>().LeftStairs;
+            Transform[] rightStairs = transform.parent.GetComponent<WaypointHelper>().RightStairs;
+            var rightDistance = Vector3.Distance(transform.position, rightStairs[0].position);
+            var leftDistance = Vector3.Distance(transform.position, leftStairs[0].position);
+            if (rightDistance > leftDistance)
+            {
+                stairs = leftStairs;
+            }
+            else
+            {
+                stairs = rightStairs;
+            }
             caminador.camino.puntos.AddRange(stairs);
             caminador.camino.puntos.Add(InitialPosition);
         }

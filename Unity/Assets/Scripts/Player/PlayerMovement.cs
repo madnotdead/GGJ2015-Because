@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     float camRayLength = 100f;
 
     public bool jump = false;
-    public float jumpForce = 20f;
+    public float jumpForce = 5f;
 
     private bool grounded = false;
     //Only calls if enabled
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         Turning();
 
-        //Jump();
+        Jump();
 
         Animating(h, v);
     }
@@ -77,13 +77,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jumping");
+        //Debug.Log("Jumping");
 
         if (!grounded) return;
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
-        grounded = false;
-        playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 20f);
+        GetComponent<PlayerStateManager>().grounded = false;
+        playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, jumpForce);
     }
 
     void Animating(float h, float v)

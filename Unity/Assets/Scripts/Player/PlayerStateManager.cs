@@ -57,7 +57,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         this.GetComponent<Caminador>().enabled = false;
     }
-    private void SetPlayerState(PlayerState playerState)
+    public void SetPlayerState(PlayerState playerState)
     {
         PlayerState oldState = CurrentState;
         CurrentState = playerState;
@@ -156,11 +156,12 @@ public class PlayerStateManager : MonoBehaviour
     private void DisableMovement()
     {
         this.GetComponent<PlayerMovement>().enabled = false;
+        this.grounded = false;
     }
 
     private void CancelTask()
     {
-        Debug.Log("Canceling task");
+        //Debug.Log("Canceling task");
     }
 
     private void ReturnToInitialPosition()
@@ -186,24 +187,28 @@ public class PlayerStateManager : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entering trigger");
-        if (other.collider.CompareTag("Stairs"))
-        {
-            Debug.Log("In  Stairs");
-        }
+        //Debug.Log("Entering trigger");
+        //if (other.collider.CompareTag("Stairs"))
+        //{
+        //    Debug.Log("In  Stairs");
+        //}
     }
 
     public void OnTriggerStay(Collider other)
     {
+        grounded = false;
+            
         if (other.collider.tag != "Stage") return;
 
-        grounded = true;
-        Debug.Log("grounded:" + grounded);
+        if(CurrentState == PlayerState.Active)
+            grounded = true;
+
+       // Debug.Log("grounded:" + grounded);
     }
 
     public void OnTriggerExit(Collider other)
     {
-        Debug.Log("Leaving trigger");
+        //Debug.Log("Leaving trigger");
     }
 
 }

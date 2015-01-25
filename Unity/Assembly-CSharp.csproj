@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStateManager.cs" />
      <Compile Include="Assets\Scripts\Player\WaypointHelper.cs" />
+     <Compile Include="Assets\TimeManager.cs" />
      <None Include="Assets\Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>

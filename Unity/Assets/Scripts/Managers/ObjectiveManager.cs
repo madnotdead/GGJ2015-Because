@@ -32,6 +32,7 @@ public class ObjectiveManager : MonoBehaviour
     private int currentObjective;
     private float currentTime;
     private float objectiveTimer = 0;
+    private float playerOnSite = 0f;
 	// Use this for initialization
 	void Start ()
 	{
@@ -44,6 +45,7 @@ public class ObjectiveManager : MonoBehaviour
         get { return objectives[currentObjective]; }
     }
 
+    private int count = 0;
     // Update is called once per frame
 	void Update ()
 	{
@@ -57,11 +59,14 @@ public class ObjectiveManager : MonoBehaviour
 	        objectiveTimer += Time.deltaTime;
 	    else
 	    {
+           
             GetCurrenteObjective.target.gameObject.SetActive(true);
 
             if (GameManager.instance.currentPlayer == null) return;
 
             var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
+
+
             Debug.Log("distance: " + distance);
             if (!(distance <= GetCurrenteObjective.distance)) return;
 
@@ -78,16 +83,19 @@ public class ObjectiveManager : MonoBehaviour
 	        }
             else
             {
+                Debug.Log("Count: "+ count++);
                 currentTime = 0;
                 GetCurrenteObjective.target.gameObject.SetActive(false);
                 //GetCurrenteObjective.target.collider.enabled = false;
-                currentObjective = UnityEngine.Random.Range(0, objectives.Length);
+                currentObjective = UnityEngine.Random.Range(0, objectives.Length );
                 objectiveTimer = 0;
                 TimeManager.instance.Next();
                 GameManager.instance.ObjectiveCompleted();
                 //GameManager.instance.currentPlayer.GetComponent<PlayerStateManager>().SetPlayerState(PlayerState.Returning);
             }
-	    
+
+
+
 	    }
 
 	  

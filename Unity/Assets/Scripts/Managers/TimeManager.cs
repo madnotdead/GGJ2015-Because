@@ -20,7 +20,7 @@ public class TimeManager : MonoBehaviour {
 
     public bool TimeLeft
     {
-        get { return currentTimeIndex < time.Length; }
+        get { return GameManager.instance.currentPlayer.audio.isPlaying; }
     }
 
     public void Next()

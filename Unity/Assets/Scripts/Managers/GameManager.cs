@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     private int LastIndex = -1;
     private int index = -1;
     public bool IsPlaying = true;
-
     public GameObject Placa;
 	// Use this for initialization
 

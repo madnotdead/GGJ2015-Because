@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LerpIntensity.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Intro.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
@@ -64,6 +65,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStateManager.cs" />
      <Compile Include="Assets\Scripts\Player\WaypointHelper.cs" />
+     <Compile Include="Assets\TurnOffLightByTime.cs" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />

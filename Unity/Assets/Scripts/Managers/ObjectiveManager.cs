@@ -33,12 +33,13 @@ public class ObjectiveManager : MonoBehaviour
     private float currentTime;
     private float objectiveTimer = 0;
     private float playerOnSite = 0f;
+
 	// Use this for initialization
 	void Start ()
 	{
 	    instance = this;
 	    currentObjective = 0;
-	}
+	}   
 
     public Objective GetCurrenteObjective
     {
@@ -61,8 +62,8 @@ public class ObjectiveManager : MonoBehaviour
 	    {
            
             GetCurrenteObjective.target.gameObject.SetActive(true);
-
             if (GameManager.instance.currentPlayer == null) return;
+            //GetComponent<Light>().enabled = true;
 
             var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
 
@@ -86,12 +87,10 @@ public class ObjectiveManager : MonoBehaviour
                 Debug.Log("Count: "+ count++);
                 currentTime = 0;
                 GetCurrenteObjective.target.gameObject.SetActive(false);
-                //GetCurrenteObjective.target.collider.enabled = false;
                 currentObjective = UnityEngine.Random.Range(0, objectives.Length );
                 objectiveTimer = 0;
                 TimeManager.instance.Next();
                 GameManager.instance.ObjectiveCompleted();
-                //GameManager.instance.currentPlayer.GetComponent<PlayerStateManager>().SetPlayerState(PlayerState.Returning);
             }
 
 

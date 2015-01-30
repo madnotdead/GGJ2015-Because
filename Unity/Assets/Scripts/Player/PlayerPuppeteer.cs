@@ -50,7 +50,7 @@ public class PlayerPuppeteer : MonoBehaviour
             if (times[currentIndex + 1] <= currentTime + timeOffset)
             {
                 currentIndex++;
-                Debug.Log(string.Format("{0} - {1}", currentTime, currentIndex));
+               // Debug.Log(string.Format("{0} - {1}", currentTime, currentIndex));
                 UpdateSingersMouths();
             }
         }
@@ -59,9 +59,9 @@ public class PlayerPuppeteer : MonoBehaviour
     private void UpdateSingersMouths()
     {
         Letter letter = letters[currentIndex];
-        Debug.Log(letter);
+       // Debug.Log(letter);
         currentMouth = mouths[letter];
-        Debug.Log(currentMouth);
+       // Debug.Log(currentMouth);
         this.BroadcastMessage("UpdateMouths");
     }
 

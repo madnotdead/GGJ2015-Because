@@ -33,7 +33,7 @@ public class ObjectiveManager : MonoBehaviour
     private float currentTime;
     private float objectiveTimer = 0;
     private float playerOnSite = 0f;
-
+    public float playerTime = 0f;
 	// Use this for initialization
 	void Start ()
 	{
@@ -50,8 +50,9 @@ public class ObjectiveManager : MonoBehaviour
     // Update is called once per frame
 	void Update ()
 	{
-	    
-	    if (!TimeManager.instance.TimeLeft) return;
+        
+        if (GameManager.instance.currentPlayer != null) 
+	        if (!TimeManager.instance.TimeLeft) return;
 
         //Debug.Log("CurrentTime: " + TimeManager.instance.CurrentTime);
         //Debug.Log("objectiveTimer: " + objectiveTimer);
@@ -64,11 +65,14 @@ public class ObjectiveManager : MonoBehaviour
             GetCurrenteObjective.target.gameObject.SetActive(true);
             if (GameManager.instance.currentPlayer == null) return;
             //GetComponent<Light>().enabled = true;
+	        playerTime += Time.deltaTime;
+            Debug.Log("PlayerTime: "+playerTime);
+
 
             var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
 
 
-            Debug.Log("distance: " + distance);
+            //Debug.Log("distance: " + distance);
             if (!(distance <= GetCurrenteObjective.distance)) return;
 
             //Objective logic
@@ -84,13 +88,14 @@ public class ObjectiveManager : MonoBehaviour
 	        }
             else
             {
-                Debug.Log("Count: "+ count++);
+                //Debug.Log("Count: "+ count++);
                 currentTime = 0;
                 GetCurrenteObjective.target.gameObject.SetActive(false);
                 currentObjective = UnityEngine.Random.Range(0, objectives.Length );
                 objectiveTimer = 0;
                 TimeManager.instance.Next();
                 GameManager.instance.ObjectiveCompleted();
+                playerTime = 0f;
             }
 
 

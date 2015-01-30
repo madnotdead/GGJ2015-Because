@@ -56,7 +56,7 @@ public class PlayerSingManager : MonoBehaviour
         if (isSinging)
         {
             MouthRenderer.sprite = GetComponentInParent<PlayerPuppeteer>().currentMouth;
-            Debug.Log(GetComponentInParent<PlayerPuppeteer>().currentMouth);
+            //Debug.Log(GetComponentInParent<PlayerPuppeteer>().currentMouth);
         }
         else
         {

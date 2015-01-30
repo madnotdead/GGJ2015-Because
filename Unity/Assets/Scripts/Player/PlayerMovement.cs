@@ -81,8 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Debug.Log(string.Format("Jumping. Can Jump: {0}. KeyDown: {1}", stateManager.CanJump, Input.GetKeyDown(KeyCode.Space)));
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    Debug.Log(string.Format("Jumping. Can Jump: {0}. KeyDown: {1}", stateManager.CanJump, Input.GetKeyDown(KeyCode.Space)));
 
         if (!stateManager.CanJump) return;
         if (!Input.GetKeyDown(KeyCode.Space)) return;

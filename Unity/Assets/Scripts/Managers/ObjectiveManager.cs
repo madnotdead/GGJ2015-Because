@@ -30,7 +30,7 @@ public class ObjectiveManager : MonoBehaviour
 
     public static ObjectiveManager instance;
     private int currentObjective;
-    private float currentTime;
+    public float currentTime { get; private set; }
     private float objectiveTimer = 0;
     private float playerOnSite = 0f;
     public float playerTime = 0f;
@@ -66,7 +66,7 @@ public class ObjectiveManager : MonoBehaviour
             if (GameManager.instance.currentPlayer == null) return;
             //GetComponent<Light>().enabled = true;
 	        playerTime += Time.deltaTime;
-            Debug.Log("PlayerTime: "+playerTime);
+            //Debug.Log("PlayerTime: "+playerTime);
 
 
             var distance = Vector3.Distance(GameManager.instance.currentPlayer.transform.position, GetCurrenteObjective.target.position);
@@ -84,7 +84,8 @@ public class ObjectiveManager : MonoBehaviour
 	        if (currentTime < GetCurrenteObjective.time)
 	        {
                 currentTime += Time.deltaTime;
-               // GameManager.instance.currentPlayer.GetComponent<PlayerStateManager>().SetPlayerState(PlayerState.Working);
+                if (GameManager.instance.currentPlayer !=null)
+                    GameManager.instance.currentPlayer.SendMessage("UpdateObjective", SendMessageOptions.DontRequireReceiver);
 	        }
             else
             {
@@ -95,6 +96,8 @@ public class ObjectiveManager : MonoBehaviour
                 objectiveTimer = 0;
                 TimeManager.instance.Next();
                 GameManager.instance.ObjectiveCompleted();
+                if (GameManager.instance.currentPlayer != null)
+                    GameManager.instance.currentPlayer.SendMessage("ObjectiveCompleted", SendMessageOptions.DontRequireReceiver);
                 playerTime = 0f;
             }
 

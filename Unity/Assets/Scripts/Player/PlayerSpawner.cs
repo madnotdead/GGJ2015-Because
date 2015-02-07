@@ -16,7 +16,11 @@ public class PlayerSpawner : MonoBehaviour {
 	void Update () {
 	
 	}
-
+    public struct PlayerInstantiatedData
+    {
+        public GameObject GameObject;
+        public int index;
+    }
     void Spawn()
     {
         GameObject playerObj = GameObject.Instantiate(PlayerPrefab) as GameObject;
@@ -24,6 +28,8 @@ public class PlayerSpawner : MonoBehaviour {
         playerObj.transform.parent = transform.parent;
         playerObj.transform.position = this.transform.position;
         playerObj.transform.SetSiblingIndex(Index);
+
+        this.SendMessage("PlayerInstantiated", new PlayerInstantiatedData() { GameObject = playerObj, index = Index }, SendMessageOptions.DontRequireReceiver);
 
         PlayerStateManager stateManager = playerObj.GetComponent<PlayerStateManager>();
         stateManager.InitialPosition = transform;

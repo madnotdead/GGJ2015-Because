@@ -10,6 +10,7 @@ public class TimeManager : MonoBehaviour {
     public float[] timeFases;
     private float timer = 0f;
     private float fixedTimeFase= 0f;
+    private bool fasesCalculated = false;
 
     public float CurrentTime
     {
@@ -18,7 +19,10 @@ public class TimeManager : MonoBehaviour {
 
     public bool TimeLeft
     {
-        get { return GameManager.instance.currentPlayer.audio.isPlaying; }
+        get
+        {
+            return GameManager.instance.currentPlayer.audio.isPlaying;
+        }
     }
 
     public int CurrentFase { get; private set; }
@@ -43,6 +47,7 @@ public class TimeManager : MonoBehaviour {
 
     void Update()
     {
+        if (!fasesCalculated) CalculateFases();
         if (currentTimeIndex > timeFases.Length)
             return;
 
@@ -63,13 +68,17 @@ public class TimeManager : MonoBehaviour {
 
     public void CalculateFases()
     {
-        var totalTime = GameManager.instance.currentPlayer.audio.time;
-
-        fixedTimeFase = (int)totalTime / countTimeFases;
-
-        for (var i = 0; i < timeFases.Length; i++)
+        if (GameManager.instance.currentPlayer != null)
         {
-            timeFases[i] = fixedTimeFase;
+            var totalTime = GameManager.instance.currentPlayer.audio.time;
+
+            fixedTimeFase = (int)totalTime / countTimeFases;
+
+            for (var i = 0; i < timeFases.Length; i++)
+            {
+                timeFases[i] = fixedTimeFase;
+            }
+            fasesCalculated = true;
         }
 
     }
